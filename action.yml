@@ -1,0 +1,25 @@
+name: 'Doc Review'
+description: 'AI-powered documentation review using Claude. Analyzes PR code changes and recommends documentation updates.'
+author: 'RLProteus'
+
+inputs:
+  anthropic-api-key:
+    description: 'Anthropic API key for Claude'
+    required: true
+  github-token:
+    description: 'GitHub token for PR comments'
+    default: ${{ github.token }}
+  model:
+    description: 'Claude model to use'
+    default: 'claude-sonnet-4-20250514'
+  doc-patterns:
+    description: 'Glob pattern for documentation files'
+    default: '**/*.md'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+
+branding:
+  icon: 'book-open'
+  color: 'blue'
